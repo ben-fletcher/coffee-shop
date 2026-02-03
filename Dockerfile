@@ -1,3 +1,12 @@
+FROM node:25 AS web
+WORKDIR /build
+
+COPY web/package.json web/package-lock.json ./
+RUN npm ci
+
+COPY web/ ./
+RUN npm run build
+
 FROM golang:1.25
 
 WORKDIR /usr/src/app
@@ -7,6 +16,8 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN go build -o /usr/local/bin/app
+RUN go build -o /usr/local/bin/coffeeshop
 
-CMD ["app"]
+COPY --from=web /build/dist /usr/local/bin/web/dist
+
+CMD ["coffeeshop"]

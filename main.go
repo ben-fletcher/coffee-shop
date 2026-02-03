@@ -20,7 +20,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	fmt.Println("Hello, World!")
+	fmt.Println("Coffee Shop")
 
 	dbUrl := os.Getenv("DATABASE_URL")
 	if dbUrl == "" {
@@ -47,7 +47,12 @@ func main() {
 	// This will only serve files that exist, API routes registered above take precedence
 	serveStaticReactApp(r)
 
-	r.Run(":8080")
+	address := "127.0.0.1:8080"
+	if gin.Mode() == gin.ReleaseMode {
+		address = ":8080"
+	}
+
+	r.Run(address)
 }
 
 func serveStaticReactApp(r *gin.Engine) {
