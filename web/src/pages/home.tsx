@@ -8,7 +8,7 @@ import BeanCard from '@/components/BeanCard'
 export default function Home() {
     const { data: beans } = useQuery({
         queryKey: ['beans'],
-        queryFn: () => fetch('http://localhost:8080/beans').then(res => res.json())
+        queryFn: () => fetch('http://localhost:8080/api/beans').then(res => res.json())
     })
 
     // Get featured beans (first 3)

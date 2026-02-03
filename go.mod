@@ -1,4 +1,4 @@
-module ben-fletcher.com/coffee-shop
+module ben-fletcher.com/coffeeshop
 
 go 1.25.4
 

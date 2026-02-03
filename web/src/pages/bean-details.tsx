@@ -14,7 +14,7 @@ export default function BeanDetails() {
 
     const { data: bean, isLoading, error } = useQuery<Bean>({
         queryKey: ['bean', id],
-        queryFn: () => fetch(`http://localhost:8080/beans/${id}`).then(res => {
+        queryFn: () => fetch(`http://localhost:8080/api/beans/${id}`).then(res => {
             if (!res.ok) {
                 throw new Error('Bean not found')
             }
@@ -25,7 +25,7 @@ export default function BeanDetails() {
 
     const purchaseMutation = useMutation({
         mutationFn: async () => {
-            const response = await fetch(`http://localhost:8080/beans/${id}/purchase`, {
+            const response = await fetch(`http://localhost:8080/api/beans/${id}/purchase`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

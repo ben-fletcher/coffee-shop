@@ -11,8 +11,8 @@ import (
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 
-	"ben-fletcher.com/coffee-shop/endpoints"
-	"ben-fletcher.com/coffee-shop/repositories"
+	"ben-fletcher.com/coffeeshop/endpoints"
+	"ben-fletcher.com/coffeeshop/repositories"
 )
 
 func main() {
@@ -47,7 +47,7 @@ func main() {
 	// This will only serve files that exist, API routes registered above take precedence
 	serveStaticReactApp(r)
 
-	r.Run("127.0.0.1:8080")
+	r.Run(":8080")
 }
 
 func serveStaticReactApp(r *gin.Engine) {

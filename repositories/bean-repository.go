@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"ben-fletcher.com/coffee-shop/models"
+	"ben-fletcher.com/coffeeshop/models"
 )
 
 type IBeanRepository interface {

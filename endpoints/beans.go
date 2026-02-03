@@ -4,22 +4,22 @@ import (
 	"fmt"
 	"net/http"
 
-	"ben-fletcher.com/coffee-shop/models"
-	"ben-fletcher.com/coffee-shop/repositories"
+	"ben-fletcher.com/coffeeshop/models"
+	"ben-fletcher.com/coffeeshop/repositories"
 	"github.com/gin-gonic/gin"
 )
 
 func MapBeansRoutes(r *gin.Engine, beansRepository repositories.IBeanRepository) {
-	r.GET("/beans", func(c *gin.Context) {
+	r.GET("/api/beans", func(c *gin.Context) {
 		GetBeans(beansRepository, c)
 	})
-	r.GET("/beans/:id", func(c *gin.Context) {
+	r.GET("/api/beans/:id", func(c *gin.Context) {
 		GetBeanById(beansRepository, c)
 	})
-	r.POST("/beans", func(c *gin.Context) {
+	r.POST("/api/beans", func(c *gin.Context) {
 		AddBean(beansRepository, c)
 	})
-	r.POST("/beans/:id/purchase", func(c *gin.Context) {
+	r.POST("/api/beans/:id/purchase", func(c *gin.Context) {
 		PurchaseBean(beansRepository, c)
 	})
 }
